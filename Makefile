@@ -6,12 +6,17 @@ GPU_LDFLAGS =  -lcufft
 SO_CFLAGS = -fPIC -shared
 LDFLAGS = -lfftw3f
 
+C_SRC = cfiles/gmf.c
+GPU_SRC = cudafiles/gmfgpu.cu
+
 ALL: libgmf.so
 
 #libgmfgpu.so: gmfgpu.cu
 #	$(GPU_CC) $(GPU_SO_CFLAGS) $(GPU_LDFLAGS) gmfgpu.cu -o $@
-libgmf.so: gmf.c
-	$(CC) $(SO_CFLAGS)  gmf.c -o $@ $(LDFLAGS)
+libgmf.so: $(C_SRC)
+	$(CC) $(SO_CFLAGS) $(C_SRC) -o $@ $(LDFLAGS)
 
-libgmfgpu.so: gmfgpu.cu
-	$(GPU_CC) $(GPU_SO_CFLAGS)  gmfgpu.cu -o $@ $(GPU_LDFLAGS)
+
+libgmfgpu.so: $(GPU_SRC)
+	$(GPU_CC) $(GPU_SO_CFLAGS) $(GPU_SRC) -o $@ $(GPU_LDFLAGS)
+
