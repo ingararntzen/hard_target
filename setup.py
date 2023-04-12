@@ -182,7 +182,7 @@ setup(
     ],
     install_requires=[
         'h5py>=2.10.0',
-        'digital_rf==2.6.6',
+        'digital_rf==2.6.7',
         'numpy>=1.19.5',
         'scipy>=1.4.1',
         'matplotlib>=3.3.4',
