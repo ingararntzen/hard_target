@@ -50,6 +50,7 @@ def locate_cuda():
             raise EnvironmentError('The CUDA %s path could not be '
                                    'located in %s' % (k, v))
 
+    print("CUDA CONFIG", cudaconfig)
     return cudaconfig
 
 
